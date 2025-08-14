@@ -151,14 +151,23 @@ Tailwind extensions (conceptual):
 - Server‑side logging around submissions (redacted PII); no emails sent
 
 ### Dependencies and tech stack
-- Next.js (App Router), React 18
+- Next.js 14.2.15 (App Router), React 18.3.1
 - Tailwind CSS
 - Framer Motion
 - Zod, React Hook Form, `@hookform/resolvers`
 - Airtable SDK
+- Map: `react-simple-maps@3` with `d3-geo` and `topojson-client`
 - `next-sitemap`
+- Linting/Types: `eslint@8.x` with `eslint-config-next@14.x`, TypeScript 5, `@types/react@18`, `@types/react-dom@18`
 - Testing: Playwright, `@axe-core/playwright` (or axe via script)
 - Note: Resend/email libs excluded from MVP (can be added later behind a flag)
+
+### Build and runtime alignment
+- No Turbopack (Next 15 feature). Dev server uses `next dev`.
+- Config uses `next.config.mjs` (not `.ts`) for Next 14 compatibility.
+- Interactive map is client-only via dynamic import with `ssr: false`, wrapped in a client component on `/licenses`.
+- Added module declaration for `react-simple-maps` to satisfy TypeScript.
+- Project targets Node 18 or 20 on Vercel; `.env*` files are ignored by Git.
 
 ### Environment variables (MVP)
 - `NEXT_PUBLIC_SITE_URL`
