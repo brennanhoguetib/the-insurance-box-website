@@ -1,0 +1,22 @@
+{
+  "slug": "life-insurance",
+  "name": "Life Insurance",
+  "summary": "Protect your family’s future with the right coverage.",
+  "hero": "Affordable coverage options to fit your needs.",
+  "bullets": [
+    "Income protection for your loved ones",
+    "Coverage options for every life stage",
+    "Term and permanent policies available",
+    "No-pressure guidance from licensed experts"
+  ],
+  "resources": [
+    { "label": "Term vs. Whole Life", "url": "https://www.policygenius.com/life-insurance/term-life-vs-whole-life/" },
+    { "label": "How much coverage do I need?", "url": "https://www.naic.org/consumer/life-insurance" }
+  ],
+  "seo": {
+    "title": "Life Insurance | The Insurance Box",
+    "description": "Compare life insurance options with plain-English guidance."
+  }
+}
+
+

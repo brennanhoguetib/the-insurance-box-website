@@ -1,0 +1,20 @@
+{
+  "slug": "health-insurance",
+  "name": "Health Insurance",
+  "summary": "Find plans that fit your doctors, meds, and budget.",
+  "hero": "Compare marketplace and off-market plans with guidance.",
+  "bullets": [
+    "Keep your doctors and medications",
+    "Find plans with the right networks",
+    "Understand deductibles and out-of-pocket limits"
+  ],
+  "resources": [
+    { "label": "How to pick a health plan", "url": "https://www.healthcare.gov/choose-a-plan/" }
+  ],
+  "seo": {
+    "title": "Health Insurance | The Insurance Box",
+    "description": "Compare health plans and understand your benefits."
+  }
+}
+
+

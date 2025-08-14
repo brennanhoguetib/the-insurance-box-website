@@ -1,0 +1,20 @@
+{
+  "slug": "financial-advisement",
+  "name": "Financial Advisement",
+  "summary": "Clarity on insurance within your bigger money plan.",
+  "hero": "Align coverage with goals like retirement and family.",
+  "bullets": [
+    "Review existing policies for gaps",
+    "Coordinate benefits across products",
+    "Simple, jargon-free recommendations"
+  ],
+  "resources": [
+    { "label": "Financial planning basics", "url": "https://www.consumerfinance.gov/consumer-tools/educator-tools/teachers/activities/financial-planning-basics/" }
+  ],
+  "seo": {
+    "title": "Financial Advisement | The Insurance Box",
+    "description": "Get guidance that connects your coverage to your goals."
+  }
+}
+
+

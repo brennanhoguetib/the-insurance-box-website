@@ -1,0 +1,20 @@
+{
+  "slug": "medicare",
+  "name": "Medicare",
+  "summary": "Make sense of Parts A, B, C, and D—without the jargon.",
+  "hero": "Compare Medicare Advantage, Medigap, and drug plans.",
+  "bullets": [
+    "Keep your doctors and prescriptions",
+    "See Advantage vs. Medigap tradeoffs",
+    "Enrollment help with deadlines"
+  ],
+  "resources": [
+    { "label": "Medicare basics", "url": "https://www.medicare.gov/basics/get-started-with-medicare" }
+  ],
+  "seo": {
+    "title": "Medicare | The Insurance Box",
+    "description": "Understand Medicare options and enroll with confidence."
+  }
+}
+
+

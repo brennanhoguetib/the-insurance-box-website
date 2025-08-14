@@ -1,0 +1,20 @@
+{
+  "slug": "disability-insurance",
+  "name": "Disability Insurance",
+  "summary": "Protect your income if injury or illness keeps you from work.",
+  "hero": "Short- and long-term coverage options explained clearly.",
+  "bullets": [
+    "Replace part of your income",
+    "Own-occupation vs. any-occupation explained",
+    "Understand elimination and benefit periods"
+  ],
+  "resources": [
+    { "label": "Disability insurance guide", "url": "https://www.investopedia.com/terms/d/disability-insurance.asp" }
+  ],
+  "seo": {
+    "title": "Disability Insurance | The Insurance Box",
+    "description": "Learn about disability insurance and protect your income."
+  }
+}
+
+

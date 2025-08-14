@@ -1,0 +1,20 @@
+{
+  "slug": "long-term-care",
+  "name": "Long-Term Care",
+  "summary": "Plan for help with daily living—at home or in a facility.",
+  "hero": "Explore traditional and hybrid LTC options.",
+  "bullets": [
+    "Understand benefit amounts and durations",
+    "Compare riders and inflation options",
+    "Hybrid policies with life insurance"
+  ],
+  "resources": [
+    { "label": "What is long-term care?", "url": "https://acl.gov/ltc/what-is-long-term-care" }
+  ],
+  "seo": {
+    "title": "Long-Term Care | The Insurance Box",
+    "description": "Compare long-term care insurance options."
+  }
+}
+
+

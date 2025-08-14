@@ -1,0 +1,20 @@
+{
+  "slug": "annuities",
+  "name": "Annuities",
+  "summary": "Turn savings into income you can’t outlive.",
+  "hero": "Fixed, indexed, and immediate annuities explained simply.",
+  "bullets": [
+    "Understand rates, caps, and participation",
+    "Lifetime income riders and guarantees",
+    "Tax-deferred growth and RMDs"
+  ],
+  "resources": [
+    { "label": "Annuities basics", "url": "https://www.finra.org/investors/learn-to-invest/types-investments/annuities" }
+  ],
+  "seo": {
+    "title": "Annuities | The Insurance Box",
+    "description": "Understand annuity types and how they fit your plan."
+  }
+}
+
+
