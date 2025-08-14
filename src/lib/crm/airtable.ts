@@ -1,7 +1,7 @@
 import Airtable from "airtable";
 import type { LeadInput } from "./index";
 
-function getClient() {
+function getClient(): Airtable.Base {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const baseId = process.env.AIRTABLE_BASE_ID as string;
   if (!apiKey || !baseId) {
@@ -11,11 +11,11 @@ function getClient() {
   return Airtable.base(baseId);
 }
 
-export async function createLead(input: LeadInput) {
+export async function createLead(input: LeadInput): Promise<void> {
   const base = getClient();
   const tableName = process.env.AIRTABLE_LEADS_TABLE_NAME || "Leads";
   const cleanedInterests = (input.interests || []).map((s) => s.trim()).filter((s) => s.length > 0);
-  const fields: Record<string, any> = {
+  const fields: Record<string, string> = {
     Name: input.name,
     Email: input.email,
     Phone: input.phone,
@@ -23,14 +23,14 @@ export async function createLead(input: LeadInput) {
     // First attempt: write as text (works with single line text columns and is visually clear)
     "Coverage Interest": cleanedInterests.join(", "),
     Message: input.message || "",
+    Source: "Website Form",
     Timestamp: new Date().toISOString(),
   };
-  // Always tag leads from this site as Website Form to match your Airtable select option
-  (fields as any).Source = "Website Form";
   try {
     await base(tableName).create([{ fields }]);
-  } catch (err: any) {
-    const code = err?.statusCode || err?.error?.statusCode;
+  } catch (e) {
+    const err = e as { statusCode?: number; error?: string; message?: string };
+    const code = err?.statusCode;
     const errorCode = String(err?.error || "");
     const msg = String(err?.message || "");
     const isCoverageIssue =
@@ -43,24 +43,26 @@ export async function createLead(input: LeadInput) {
 
     // Second attempt: if field is a multi/single select, try sending options (array or single)
     if (cleanedInterests.length > 0) {
-      const attemptSingle: Record<string, any> = { ...fields, "Coverage Interest": cleanedInterests[0] };
+      const attemptSingle: Record<string, string> = { ...fields, "Coverage Interest": cleanedInterests[0] };
       try {
         await base(tableName).create([{ fields: attemptSingle }]);
         return;
-      } catch (_) {
+      } catch (fallbackError) {
         // ignore and fall through to final fallback
+        console.warn("Single select attempt failed:", fallbackError);
       }
-      const attemptMulti: Record<string, any> = { ...fields, "Coverage Interest": cleanedInterests };
+      const attemptMulti: Record<string, string> = { ...fields, "Coverage Interest": cleanedInterests.join(", ") };
       try {
         await base(tableName).create([{ fields: attemptMulti }]);
         return;
-      } catch (_) {
+      } catch (fallbackError) {
         // fall through
+        console.warn("Multi select attempt failed:", fallbackError);
       }
     }
 
     // Final fallback: write interests into Message and omit the field
-    const fallbackFields: Record<string, any> = {
+    const fallbackFields: Record<string, string> = {
       ...fields,
       Message: `${fields.Message ? fields.Message + "\n" : ""}Interests: ${cleanedInterests.join(", ")}`,
     };

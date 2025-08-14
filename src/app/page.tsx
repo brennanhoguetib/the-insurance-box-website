@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ValueProps from "@/components/sections/ValueProps";
 import Testimonials from "@/components/sections/Testimonials";
 import StatsStrip from "@/components/sections/StatsStrip";
@@ -15,7 +16,6 @@ export default function Home() {
           {/* JSON-LD: Organization */}
           <script
             type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
@@ -27,18 +27,17 @@ export default function Home() {
             }}
           />
           <div className="mt-10 flex items-center gap-4">
-            <a
+            <Link
               href="/contact"
               className="tib-btn-primary inline-flex items-center justify-center rounded-xl px-5 py-3 text-[color:var(--text-primary)] bg-[color:var(--brand-primary)] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.2)] ring-1 ring-white/30 hover:opacity-95"
             >
               Get my quote
-            </a>
-            <a
-              href="/products"
+            </Link>
+            <button
               className="tib-btn-secondary inline-flex items-center justify-center rounded-xl px-5 py-3 text-[color:var(--text-primary)] bg-white/40 backdrop-blur-xl ring-1 ring-white/30 hover:bg-white/50"
             >
               Browse products
-            </a>
+            </button>
           </div>
         </div>
       </div>

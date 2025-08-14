@@ -18,12 +18,13 @@ export async function POST(request: Request) {
       source: parsed.source,
     });
     return NextResponse.json({ ok: true });
-  } catch (error: any) {
-    if (error?.issues) {
-      return NextResponse.json({ ok: false, errors: error.issues }, { status: 400 });
+  } catch (error) {
+    const err = error as { issues?: unknown; message?: string };
+    if (err?.issues) {
+      return NextResponse.json({ ok: false, errors: err.issues }, { status: 400 });
     }
-    console.error("/api/contact error", error);
-    return NextResponse.json({ ok: false, message: error?.message || "Server error" }, { status: 500 });
+    console.error("/api/contact error", err);
+    return NextResponse.json({ ok: false, message: err?.message || "Server error" }, { status: 500 });
   }
 }
 

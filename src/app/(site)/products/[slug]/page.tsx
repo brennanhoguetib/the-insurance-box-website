@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getAllProducts, getProductBySlug } from "@/lib/products";
 import { productBreadcrumbJsonLd } from "@/lib/seo";
 
@@ -8,13 +9,13 @@ export function generateStaticParams() {
   return getAllProducts().map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: Params) {
+export function generateMetadata({ params }: Params): Metadata {
   const product = getProductBySlug(params.slug);
-  if (!product) return {} as any;
+  if (!product) return { title: "Not found" };
   return {
     title: product.seo.title,
     description: product.seo.description,
-  } as any;
+  };
 }
 
 export default function ProductDetailPage({ params }: Params) {
@@ -32,7 +33,6 @@ export default function ProductDetailPage({ params }: Params) {
     <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productBreadcrumbJsonLd(product.name, product.slug)) }}
       />
       <div className="max-w-3xl">
@@ -62,12 +62,12 @@ export default function ProductDetailPage({ params }: Params) {
         </div>
       </div>
       <div className="mt-12">
-        <a
+        <Link
           href="/contact"
           className="tib-btn-primary inline-flex items-center justify-center rounded-xl px-5 py-3 text-[color:var(--text-primary)] bg-[color:var(--brand-primary)] ring-1 ring-white/30 hover:opacity-95"
         >
           Get started
-        </a>
+        </Link>
       </div>
     </section>
   );

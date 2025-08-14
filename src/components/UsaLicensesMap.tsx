@@ -28,8 +28,8 @@ export default function UsaLicensesMap({ licensedStates, onClickState }: Props) 
     <div className="w-full overflow-x-auto">
       <ComposableMap projection="geoAlbersUsa" width={800} height={500} style={{ width: "100%", height: "auto" }}>
         <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map((geo) => {
+          {({ geographies }: { geographies: any[] }) =>
+            geographies.map((geo: any) => {
               const abbr = FIPS_TO_USPS[String(geo.id).padStart(2, "0")];
               const licensed = set.has(abbr);
               return (

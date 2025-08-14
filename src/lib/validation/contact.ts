@@ -10,7 +10,7 @@ export const contactSchema = z.object({
   zip: z.string().regex(/^\d{5}$/g, "Enter a 5-digit ZIP code"),
   interests: z.array(z.string()).min(1, "Choose at least one interest"),
   message: z.string().max(2000).optional().default(""),
-  consent: z.literal(true, { errorMap: () => ({ message: "Please agree to proceed" }) }),
+  consent: z.literal(true, { message: "Please agree to proceed" as any }),
   // Anti-spam
   honey: z.string().max(0).optional().default(""),
   ttfb: z.number().min(300, "Please wait a moment before submitting"),
